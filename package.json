@@ -1,20 +1,27 @@
 {
-  "name": "services",
+  "name": "lunchy",
   "version": "1.0.0",
   "description": "",
-  "main": "services.js",
+  "main": "lunchy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Marjune Batac",
   "license": "ISC",
   "dependencies": {
-    "body-parser":"*",
-  	"express":"*",
-  	"mongoose":"*",
-  	"redis":"*",
-  	"ejs":"*",
-  	"mysql":"*",
-    "url":"*"
+    "body-parser": "*",
+    "connect-flash": "^0.1.1",
+    "ejs": "*",
+    "express": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongojs": "*",
+    "mongoose": "*",
+    "mysql": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "redis": "*",
+    "url": "*"
   }
 }

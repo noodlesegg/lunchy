@@ -1,8 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
-// Auth by post
-router.post('/', function(request, response){
+// Login Page - GET
+router.get('/login', function(request, response){
+	response.render('login');
+});
+
+router.post('/login', function(request, response){
 	var username = request.body.username;
 	var password = request.body.password;
 
@@ -54,7 +60,6 @@ router.post('/', function(request, response){
 				}
 				console.log('loging '+item.user_name);
 			});
-			response.send(status);
 		});
 	});
 });
