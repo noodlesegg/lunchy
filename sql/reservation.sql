@@ -9,8 +9,7 @@ CREATE TABLE user(
 	user_name VARCHAR(30),
 	email VARCHAR(50),
 	password CHAR(41),
-	first_name VARCHAR(50),
-	last_name VARCHAR(50)
+	name VARCHAR(255)
 );
 
 CREATE TABLE menu(
@@ -28,6 +27,6 @@ CREATE TABLE reserve(
 	FOReiGN KEY(menuId) REFERENCES menu(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO user(user_name, email, password, first_name, last_name) VALUES
-('marjune', 'mbatac@cambridge.org', PASSWORD('pa$$w0rd'), 'Marjune', 'Batac'),
-('elmer', 'ebaluyo@cambridge.org', PASSWORD('pa$$w0rd'), 'Elmer', 'Baluyo');
+INSERT INTO user(user_name, email, password, name) VALUES
+('marjune', 'mbatac@cambridge.org', PASSWORD('pa$$w0rd'), 'Marjune'),
+('elmer', 'ebaluyo@cambridge.org', PASSWORD('pa$$w0rd'), 'Elmer');

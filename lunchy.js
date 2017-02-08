@@ -3,8 +3,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var flash = require('connect-flash');
 var session = require('express-session');
-var port = 9000;
 var app = express();
+var port = 9000;
 
 // BodyParser
 app.use(bodyParser.json());
@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({ extended: false}));
 
 // Connect-Flash Middleware
 app.use(flash());
-app.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res);
+app.use(function (request, response, next) {
+  request.locals.messages = require('express-messages')(request, response);
   next();
 });
 
@@ -33,8 +33,9 @@ app.set('view engine', 'ejs');
 
 // routes
 app.use('/', require('./router/index'));
-app.use('/users', require('./modules/users'));
-app.use('/menu', require('./router/menu'))
+app.use('/users', require('./router/users'));
+app.use('/menu', require('./router/menu'));
+app.use('/reservation', require('./router/reservation'));
 
 // 404 page not found
 app.get('*', function(request, response){
@@ -43,7 +44,7 @@ app.get('*', function(request, response){
 });
 
 app.listen(port, function(){
-	console.log('Services started at port '+port);
+	console.log('The luncy app started at port '+port);
 });
 
 module.exports = app;
