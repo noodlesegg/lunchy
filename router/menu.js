@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Menu = require('../models/menus');
+var Menu = require('../models/menu');
 
 // Get All List
 router.get('/', function(request, resonse, next){

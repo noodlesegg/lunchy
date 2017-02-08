@@ -11,11 +11,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
 // Connect-Flash Middleware
-app.use(flash());
-app.use(function (request, response, next) {
-  request.locals.messages = require('express-messages')(request, response);
-  next();
-});
+// app.use(flash());
+// app.use(function (request, response, next) {
+//   request.locals.messages = require('express-messages')(request, response);
+//   next();
+// });
 
 // Express Session Middleware
 app.use(session({
@@ -33,7 +33,7 @@ app.set('view engine', 'ejs');
 
 // routes
 app.use('/', require('./router/index'));
-app.use('/users', require('./router/users'));
+app.use('/user', require('./router/user'));
 app.use('/menu', require('./router/menu'));
 app.use('/reservation', require('./router/reservation'));
 
