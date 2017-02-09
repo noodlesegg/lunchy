@@ -33,6 +33,7 @@ app.set('view engine', 'ejs');
 
 // routes
 app.use('/', require('./router/index'));
+app.use('/logs', require('./router/logs'));
 app.use('/user', require('./router/user'));
 app.use('/menu', require('./router/menu'));
 app.use('/reservation', require('./router/reservation'));

@@ -19,13 +19,3 @@ var logs = module.exports = mongoose.model('logins', logSchema);
 module.exports.getLogs = function(callback, limit){
     logs.find(callback).limit(limit);
 }
-
-// insert log
-module.exports.addLog = function(callback, data){
-    // var logs = require('../models/logs');
-    // var newLogin = new logs({
-    //    'id':item.id,
-    //    'userName':item.user_name,
-    //    'loginDate':Date.now()
-    // });
-};

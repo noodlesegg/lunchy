@@ -3,6 +3,7 @@
  * @author marjune
  */
 var mysql = require('../database/mysql');
+var logs = require('../models/logs');
 
 // user login
 module.exports.login = function(username, password, callback){
@@ -24,6 +25,15 @@ module.exports.login = function(username, password, callback){
 	  		callback(false, status);
 	  	}
 		rows.forEach(function(item){
+			// logging a user
+			var newLog = new logs({
+				'id':item.id,
+				'userName':item.user_name,
+				'loginDate':new Date()
+			});
+			newLog.save(function(log){
+				console.log('logging.... '+item.user_name);
+			});
 		    callback(false, {
 			    	'error':0,
 			    	'message':'success',
@@ -35,4 +45,16 @@ module.exports.login = function(username, password, callback){
 			});
 		});
 	});
+};
+
+// register user
+module.exports.register = function(data, callback) {
+	var query = 'INSERT INTO user(user_name, email, password, name) '+
+                'VALUES("'+data.username+'", "'+data.email+'", PASSWORD("'+data.password+'"), "'+data.name+'")';
+    mysql.query(query, function(error, rows, fields) {
+        if(error) {
+            callback(error, {'error':1,'message':error});
+        }
+        callback(false, {'error':0,'message':'success'});
+    });
 };
